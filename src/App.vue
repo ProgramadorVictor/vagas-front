@@ -1,6 +1,9 @@
 <template>
-
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- 
+    Single file Component/Single file template
+    É a ideia de que podemos reutilizar código com vários componentes em arquivos unicos, cada componente...
+    Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
+  -->
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
