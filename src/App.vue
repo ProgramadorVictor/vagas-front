@@ -4,16 +4,19 @@
     É a ideia de que podemos reutilizar código com vários componentes em arquivos unicos, cada componente...
     Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
   -->
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TopoComponent/>
+  <ConteudoComponent/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ConteudoComponent from './components/layouts/ConteudoComponent.vue'
+import TopoComponent from './components/layouts/TopoComponent.vue' 
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { //Precisamos registar os components, para usar no contexto de template.
+    ConteudoComponent,
+    TopoComponent,
   }
 }
 </script>
