@@ -7,5 +7,5 @@ Projeto realizado com o Professor Jorge Sant Ana na Udemy, no curso **Desenvolvi
 
 ## Tecnologias Utilizadas
 
-- **Frontend**: Vue.js
+- **Frontend**: Vue.js, Bootstrap
 - **Outras Ferramentas**: NPM

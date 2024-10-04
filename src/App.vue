@@ -8,6 +8,9 @@
   <ConteudoComponent/>
   <conteudo-component/><!-- Utilização da case, kebab-case -->
   <conteudo-kebab-case/>
+  <div>
+      <button class="btn btn-primary">Clique aqui</button>
+  </div>
 </template>
 
 <script>
