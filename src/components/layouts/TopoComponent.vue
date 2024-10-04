@@ -4,8 +4,8 @@
     </div>
 </template>
 <script>
-    export default {
-    
+    export default {//Configura a instancia do component, data, watcher, computed, methods.
+        name: 'TopoComponent', //Podemos determinar o nome do componente no proprio componente.
     }
 </script>
 <style lang="css">
