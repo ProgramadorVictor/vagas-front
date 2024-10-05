@@ -12,6 +12,7 @@
   -->
   <ConteudoComponent/>
   <h1>Componente App</h1>
+  <p>App: {{ $style }}</p>
 </template>
 
 <script>
@@ -28,9 +29,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped> /* 'scoped' adiciona estilo somente ao componente especificado. No caso somente o 'App.vue' vai ter o estilo */
+<style lang="css" module> /* 'scoped' adiciona estilo somente ao componente especificado. No caso somente o 'App.vue' vai ter o estilo */
 /* sem 'scoped' O estilo que esta no componente mais alto em questão de hierarquia recebe o estilo, os que estão mais baixo podem modificar o estilo. Causando uma confusão */
-h1{
-  color: red !important;
-}
 </style>
