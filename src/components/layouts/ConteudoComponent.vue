@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Contéudo</p>
+        <h1>Contéudo Componente</h1>
         <HomeKey/>
         <PublicarVaga/>
     </div>
@@ -15,5 +15,8 @@
         }
     }
 </script>
-<style lang="css">
+<style lang="css" scoped>
+h1{
+    color: pink !important;
+}
 </style>

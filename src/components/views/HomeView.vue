@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Home</p>
+        <h1>Home Componente</h1>
     </div>
 </template>
 <script>
@@ -8,5 +8,8 @@
         name: 'HomeView'
     }
 </script>
-<style lang="css">
+<style lang="css" scoped>
+h1{
+    color: rgb(0, 21, 255) !important;
+}
 </style>

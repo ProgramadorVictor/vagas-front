@@ -10,6 +10,8 @@
     <conteudo-component/> Utilização da case, kebab-case
     <conteudo-kebab-case/>
   -->
+  <ConteudoComponent/>
+  <h1>Componente App</h1>
 </template>
 
 <script>
@@ -26,13 +28,9 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
+<style lang="css" scoped> /* 'scoped' adiciona estilo somente ao componente especificado. No caso somente o 'App.vue' vai ter o estilo */
+/* sem 'scoped' O estilo que esta no componente mais alto em questão de hierarquia recebe o estilo, os que estão mais baixo podem modificar o estilo. Causando uma confusão */
+h1{
+  color: red !important;
 }
 </style>
