@@ -2,43 +2,18 @@
     <div class="container py-4">
         <div class="row">
             <div class="col">
-                <div class="h-100 p-5 bg-light border rounded-3">
-                    <h2>Pesquisar Vagas</h2>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Titulo da vaga</label>
-                                <input type="text" name="" id="" class="form-control" placeholder="Pesquise por palavras chaves por exemplo PHP, Pleno, Analista">
-                                <small class="form-text text-muted">Informe palavras que estejam relacionada ao titulo da vaga que você procura</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button class="btn btn-outline-dark mt-2">Buscar</button>
-                        </div>
-                    </div>
-                </div>
+                <PesquisarVaga/>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-4">
-                <div class="h5 p-5 roudend-3 border bg-dark text-white">
-                    <p>Vagas Abertas</p>
-                    <h2>50</h2>
-                </div>
+                <IndicadorComponent titulo="Vagas Abertas" numero="50"/>
             </div>
             <div class="col-4">
-                <div class="h5 p-5 roudend-3 border bg-dark text-white">
-                    <p>Profissionais cadastrados</p>
-                    <h2>125</h2>
-                </div>
+                <IndicadorComponent titulo="Profissionais cadastrados" numero="125"/>
             </div>
             <div class="col-4">
-                <div class="h5 p-5 roudend-3 border bg-light text-dark">
-                    <p>Visitantes Online</p>
-                    <h2>25</h2>
-                </div>
+                <IndicadorComponent titulo="Visitantes Online" numero="25" estilo="bg-light text-dark"/>
             </div>
         </div>
         <!-- <h1>Home Componente</h1>
@@ -46,8 +21,15 @@
     </div>
 </template>
 <script>
+    import IndicadorComponent from '../comuns/IndicadorComponent.vue';
+    import PesquisarVaga from '../comuns/PesquisarVaga.vue';
+
     export default {
         name: 'HomeView',
+        components: {
+            PesquisarVaga,
+            IndicadorComponent
+        },
         beforeUnmount() { //Antes da instancia do componente ser removido
             console.log('Antes de demonstar/destruir')
         },
