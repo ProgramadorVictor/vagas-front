@@ -2,15 +2,22 @@
     <div>
         <h1>{{titulo}}</h1>
         <button @click="atualizarComponente">Atualizar Componente</button>
-        <HomeKey/>
-        <p>{{ $style }}</p>
-        <PublicarVaga :class="$style.teste"/><!-- Somente funciona sem kebab-case. -->
-        <div :class="$style['teste-1']" v-show="show"><!-- Acessando o estilo pela propriedade $style usando o atributo 'module' em style. -->
+
+        <!-- Renderizando de modo dinamico um componente com a tag 'component' do vue. -->
+        <button @click="conteudo = 'HomeKey'">Home</button>
+        <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button>
+
+        <component :is="conteudo"/><!-- O componente carregado vai ser o valor de 'conteudo' dentro da propriedade data -->
+
+        <!-- <HomeKey/>
+        <p v-show="show">{{ $style }}</p>
+        <PublicarVaga :class="$style.teste"/> Somente funciona sem kebab-case.
+        <div :class="$style['teste-1']" v-show="show"> Acessando o estilo pela propriedade $style usando o atributo 'module' em style.
             Teste-1
         </div>
         <div :id="$style['teste-2']" v-show="show">
             Teste-2
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -24,7 +31,8 @@
         data(){
             return{
                 show: false,
-                titulo: 'Componente Conteudo'
+                titulo: 'Componente Conteudo',
+                conteudo: 'HomeKey',
             }
         },
         methods:{

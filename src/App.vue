@@ -12,8 +12,8 @@
   -->
   <ConteudoComponent v-if="visiblidade"/>
   <button @click="desmontarComponente">Desmontar o Componente Conteudo</button>
-  <h1>Componente App</h1>
-  <p>App: {{ $style }}</p>
+  <!-- <h1>Componente App</h1>
+  <p>App: {{ $style }}</p> -->
 </template>
 
 <script>
