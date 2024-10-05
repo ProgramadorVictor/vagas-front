@@ -6,8 +6,13 @@
         <!-- Renderizando de modo dinamico um componente com a tag 'component' do vue. -->
         <button @click="conteudo = 'HomeKey'">Home</button>
         <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button>
-
-        <component :is="conteudo"/><!-- O componente carregado vai ser o valor de 'conteudo' dentro da propriedade data -->
+        
+        <!-- <component :is="conteudo"/> O componente carregado vai ser o valor de 'conteudo' dentro da propriedade data -->
+        <!-- QUANDO NÃO UTILIZADO <keep-alive>. O componente é desmontado e criado entrando no lifecycle unmounted e mounted. -->
+        <!-- Informar para o vue que o componente deve se manter em cache. Para não prejudicar a perfomance. Caso a ideia seja manter ele. -->
+        <keep-alive>
+            <component :is="conteudo"/>
+        </keep-alive>
 
         <!-- <HomeKey/>
         <p v-show="show">{{ $style }}</p>
@@ -59,12 +64,12 @@
         updated() { //Depois que o componente é atualizado
             console.log('Atualizado')
         },
-        beforeUnmount() { //Antes da instancia do componente ser removido
-            console.log('Antes de demonstar/destruir')
-        },
-        unmounted() { //Após a remoção do componente ser feita.
-            console.log('Demonstado/destruído')
-        },
+        // beforeUnmount() { //Antes da instancia do componente ser removido
+        //     console.log('Antes de demonstar/destruir')
+        // },
+        // unmounted() { //Após a remoção do componente ser feita.
+        //     console.log('Demonstado/destruído')
+        // },
         errorCaptured() {
             console.log('Erro capturado')
         },
@@ -74,12 +79,12 @@
         renderTriggered() {
             console.log('Re-renderização acionada')
         },
-        activated() {
-            console.log('Componente é ativado')
-        },
-        deactivated() {
-            console.log('Componente é desativado')
-        }
+        // activated() {
+        //     console.log('Componente é ativado')
+        // },
+        // deactivated() {
+        //     console.log('Componente é desativado')
+        // }
     }
 </script>
 <style lang="css" module>/* Usado para quando os components tem estilos com mesmo nome não sobescrever os demais. */
