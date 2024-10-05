@@ -11,7 +11,7 @@
     <conteudo-kebab-case/>
   -->
   <ConteudoComponent v-if="visiblidade"/>
-  <button @click="desmontarComponente">Desmontar o Componente Conteudo</button>
+  <button @click="desmontarComponente" style="margin: 0 auto; display: block;">Desmontar o Componente Conteudo</button>
   <!-- <h1>Componente App</h1>
   <p>App: {{ $style }}</p> -->
 </template>

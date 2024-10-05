@@ -1,11 +1,13 @@
 <template>
     <div>
         <h1>{{titulo}}</h1>
-        <button @click="atualizarComponente">Atualizar Componente</button>
+        <!-- <button @click="atualizarComponente">Atualizar Componente</button> -->
 
         <!-- Renderizando de modo dinamico um componente com a tag 'component' do vue. -->
-        <button @click="conteudo = 'HomeKey'">Home</button>
-        <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button>
+        <div style="display: flex; justify-content: center;">
+            <button @click="conteudo = 'HomeKey'" >Home</button>
+            <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button>
+        </div>
         
         <!-- <component :is="conteudo"/> O componente carregado vai ser o valor de 'conteudo' dentro da propriedade data -->
         <!-- QUANDO NÃO UTILIZADO <keep-alive>. O componente é desmontado e criado entrando no lifecycle unmounted e mounted. -->
