@@ -10,7 +10,8 @@
     <conteudo-component/> Utilização da case, kebab-case
     <conteudo-kebab-case/>
   -->
-  <ConteudoComponent/>
+  <ConteudoComponent v-if="visiblidade"/>
+  <button @click="desmontarComponente">Desmontar o Componente Conteudo</button>
   <h1>Componente App</h1>
   <p>App: {{ $style }}</p>
 </template>
@@ -25,6 +26,14 @@ export default {
     ConteudoComponent, //Sintaxe enxuta.
     Topo: TopoComponent, //Topo é a chave e TopoComponent é o conteúdo que vai ser recebido pela chave Topo, Topo faz referencia a TopoComponent.
     'conteudo-kebab-case': ConteudoComponent, //Abordagem pouco usada para nomeação de ccomponents.
+  },
+  data: () => ({
+    visiblidade: true
+  }),
+  methods:{
+    desmontarComponente(){
+      this.visiblidade = false;
+    }
   }
 }
 </script>
