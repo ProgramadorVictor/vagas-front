@@ -7,6 +7,14 @@
         </div>
         
         <div class="row mt-5">
+            <div class="col">
+                <VagaComponent/>
+                <VagaComponent/>
+                <VagaComponent/><!-- self-closing -->
+            </div>
+        </div>
+
+        <div class="row mt-5">
             <div class="col-4">
                 <IndicadorComponent titulo="Vagas Abertas" numero="50"/>
             </div>
@@ -23,14 +31,16 @@
     </div>
 </template>
 <script>
-    import IndicadorComponent from '../comuns/IndicadorComponent.vue';
-    import PesquisarVaga from '../comuns/PesquisarVaga.vue';
+    import IndicadorComponent from '../comuns/IndicadorComponent.vue'
+    import PesquisarVaga from '../comuns/PesquisarVaga.vue'
+    import VagaComponent from '../comuns/VagaComponent.vue'
 
     export default {
         name: 'HomeView',
         components: {
             PesquisarVaga,
-            IndicadorComponent
+            IndicadorComponent,
+            VagaComponent
         },
         data: () => ({
             usuarioOnline: 0
