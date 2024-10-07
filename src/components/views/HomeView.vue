@@ -5,6 +5,7 @@
                 <PesquisarVaga/>
             </div>
         </div>
+        
         <div class="row mt-5">
             <div class="col-4">
                 <IndicadorComponent titulo="Vagas Abertas" numero="50"/>
@@ -13,7 +14,8 @@
                 <IndicadorComponent titulo="Profissionais cadastrados" numero="125"/>
             </div>
             <div class="col-4">
-                <IndicadorComponent titulo="Visitantes Online" numero="25" estilo="bg-light text-dark"/>
+                <IndicadorComponent :online="usuarioOnline" titulo="Visitantes Online" estilo="bg-light text-dark"/>
+                <!-- Props ainda continuam reativos quando encaminhados para o componente filho. -->
             </div>
         </div>
         <!-- <h1>Home Componente</h1>
@@ -29,6 +31,17 @@
         components: {
             PesquisarVaga,
             IndicadorComponent
+        },
+        data: () => ({
+            usuarioOnline: 0
+        }),
+        methods: { 
+            getUserOnline(){ //Simulando solicitações para o back-end para usuarios online
+                this.usuarioOnline = Math.floor(Math.random() * 100);
+            }
+        },
+        created(){
+            setInterval(this.getUserOnline, 1000); //Função passada por referência não chamada. Chamada getUserOnline(), Referência getUserOnline
         },
         beforeUnmount() { //Antes da instancia do componente ser removido
             console.log('Antes de demonstar/destruir')
