@@ -47,7 +47,7 @@
                 <div class="form-text">Informe o tipo de contratação da vaga.</div>
             </div>
         </div>
-        
+
         <div class="row mt-3">
             <div class="col">
                 <button type="submit" class="btn btn-primary" @click="salvarVaga()">Cadastrar</button>
@@ -68,15 +68,23 @@
         }),
         methods: {
             salvarVaga(){
-                let vaga = {
+                let vagas = JSON.parse(localStorage.getItem('vagas')); //Obtendo a string e convertendo em um objeto
+                
+                if (!this.titulo || !this.descricao || !this.salario || !this.tipo) {
+                    console.error('Todos os campos devem ser preenchidos');
+                    return;
+                }
+
+                vagas.push({
                     titulo: this.titulo,
                     descricao: this.descricao,
                     salario: this.salario,
                     modalidade: this.tipo,
-                }
+                });
+
                 //LocalStorage é usado por aplicações front-end para armazenar informações.
-                localStorage.setItem('vagas', JSON.stringify(vaga)); //O primeiro valor é a chave que estamos armazenando, O segundo valor é uma string.
-                //Não podemos passar um objeto diretamente, utilizamos o JSON.stringify(); Para converter o objeto em uma string.
+                localStorage.setItem('vagas', JSON.stringify(vagas)); //O primeiro valor é a chave que estamos armazenando, O segundo valor é uma string.
+                //Não podemos passar um objeto diretamente, utilizamos o JSON.stringify(); Para converter o objeto em uma string JSON.
             }
         }
     }
