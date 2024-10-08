@@ -1,13 +1,88 @@
 <template>
-    <div>
-        <h1>Publicar Vaga</h1>
-        <p>Vaga: {{ $style }}</p>
+    <div class="container py-4">
+        <div class="row">
+            <div class="col">
+                <h4>Apresente-se a sua vaga para milhares de profissionais e de graça</h4>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label for="form-label">Titulo da vaga</label>
+                <input type="text" class="form-control" v-model="titulo">
+                <div class="form-text">Por exemplo: Programador Js e Vue.js</div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label for="form-label">Descrição</label>
+                <textarea class="form-control" v-model="descricao"></textarea>
+                <div class="form-text">Informe os detalhes da vaga</div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <label for="form-label">Salário</label>
+                <input type="number" class="form-control" v-model="salario">
+                <div class="form-text">Informe o salário</div>
+            </div>
+            <div class="col">
+                <label for="form-label">Modalidade</label>
+                <select class="form-select" v-model="modalidade">
+                    <option value="" disabled>Selecione a modalidade</option>
+                    <option value="1">Home Office</option>
+                    <option value="2">Presencial</option>
+                </select>
+                <div class="form-text">Informe onde as atividades seram realizadas.</div>
+            </div>
+            <div class="col">
+                <label for="form-label">Tipo da Contratação da Vaga</label>
+                <select class="form-select" v-model="tipo">
+                    <option value="" disabled>Selecione um tipo</option>
+                    <option value="1">CLT</option>
+                    <option value="2">PJ</option>
+                </select>
+                <div class="form-text">Informe o tipo de contratação da vaga.</div>
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" @click="salvarVaga()">Cadastrar</button>
+            </div>
+        </div>
+
     </div>
 </template>
 <script>
     export default {
-        name: 'PublicarVaga'
+        name: 'PublicarVaga',
+        data: () => ({
+            titulo: '',
+            descricao: '',
+            salario: '',
+            modalidade: '',
+            tipo: '',
+        }),
+        methods: {
+            salvarVaga(){
+                let vaga = {
+                    titulo: this.titulo,
+                    descricao: this.descricao,
+                    salario: this.salario,
+                    modalidade: this.tipo,
+                }
+                //LocalStorage é usado por aplicações front-end para armazenar informações.
+                localStorage.setItem('vagas', JSON.stringify(vaga)); //O primeiro valor é a chave que estamos armazenando, O segundo valor é uma string.
+                //Não podemos passar um objeto diretamente, utilizamos o JSON.stringify(); Para converter o objeto em uma string.
+            }
+        }
     }
 </script>
 <style lang="css">
+    textarea{
+        resize: none;
+    }
 </style>
