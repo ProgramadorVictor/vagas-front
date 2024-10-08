@@ -7,6 +7,9 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        Vagas Favoritas
+                    </button>
                 </nav>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -27,12 +30,17 @@
             </div>
         </nav>
     </div>
+    <VagasFavoritas/>
 </template>
 <script>
+    import VagasFavoritas from '@/components/comuns/VagasFavoritas.vue';
     export default {//Configura a instancia do component, data, watcher, computed, methods.
         name: 'TopoComponent', //Podemos determinar o nome do componente no proprio componente.
         props: {
             funcaoCallback: Function
+        },
+        components: {
+            VagasFavoritas
         },
         methods:{
             navegarPara(){
