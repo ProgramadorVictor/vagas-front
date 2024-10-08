@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>{{titulo}}</h1>
+        <!-- <h1>{{titulo}}</h1> -->
         <!-- <button @click="atualizarComponente">Atualizar Componente</button> -->
 
         <!-- Renderizando de modo dinamico um componente com a tag 'component' do vue. -->
         <div style="display: flex; justify-content: center;">
-            <button @click="conteudo = 'HomeKey'" >Home</button>
-            <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button>
+            <!-- <button @click="conteudo = 'HomeKey'" >Home</button>
+            <button @click="conteudo = 'PublicarVaga'">Publicar Vaga</button> -->
         </div>
         
         <!-- <component :is="conteudo"/> O componente carregado vai ser o valor de 'conteudo' dentro da propriedade data -->
@@ -35,11 +35,11 @@
             HomeKey: HomeView, //Atribuindo HomeView a chave HomeKey 
             PublicarVaga
         },
+        props: ['conteudo'],
         data(){
             return{
                 show: false,
                 titulo: 'Componente Conteudo',
-                conteudo: 'HomeKey',
             }
         },
         methods:{
@@ -59,6 +59,7 @@
         },
         mounted() { //O componente é montado e passa a ficar no DOM real.
             console.log('Montado')
+            console.log(this.conteudo);
         },
         beforeUpdate() { //Antes d componente ser atualizado
             console.log('Antes de atualizar')

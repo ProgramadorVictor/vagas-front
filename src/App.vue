@@ -4,13 +4,13 @@
     É a ideia de que podemos reutilizar código com vários componentes em arquivos unicos, cada componente...
     Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
   -->
-  <Topo/><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
+  <Topo @conteudo="trocarConteudo"/><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case
     <conteudo-kebab-case/>
   -->
-  <ConteudoComponent v-if="visiblidade"/>
+  <ConteudoComponent :conteudo="visibilidade"/>
   <button @click="desmontarComponente" style="margin: 0 auto; display: block;">Desmontar o Componente Conteudo</button>
   <!-- <h1>Componente App</h1>
   <p>App: {{ $style }}</p> -->
@@ -28,11 +28,14 @@ export default {
     'conteudo-kebab-case': ConteudoComponent, //Abordagem pouco usada para nomeação de ccomponents.
   },
   data: () => ({
-    visiblidade: true
+    visibilidade: 'HomeKey'
   }),
   methods:{
     desmontarComponente(){
-      this.visiblidade = false;
+      this.visibilidade = false;
+    },
+    trocarConteudo(filhoParaPai){
+      this.visibilidade = filhoParaPai;
     }
   }
 }

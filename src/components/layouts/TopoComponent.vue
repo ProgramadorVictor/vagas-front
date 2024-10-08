@@ -11,10 +11,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#" @click="navegarPara('HomeKey')">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Publicar Vaga</a>
+                            <a class="nav-link text-white" href="#" @click="navegarPara('PublicarVaga')">Publicar Vaga</a>
                         </li>
                     </ul>
                 </div>
@@ -25,6 +25,11 @@
 <script>
     export default {//Configura a instancia do component, data, watcher, computed, methods.
         name: 'TopoComponent', //Podemos determinar o nome do componente no proprio componente.
+        methods:{
+            navegarPara(menu){
+                this.$emit('conteudo', menu);
+            }
+        }
     }
 </script>
 <style lang="css">
