@@ -10,11 +10,17 @@
                 </nav>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="#" @click="navegarPara('HomeKey')">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#" @click="navegarPara('PublicarVaga')">Publicar Vaga</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#" @click="funcaoCallback('HomeKey', 'Home')">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" @click="funcaoCallback('PublicarVaga', 'Vaga')">Publicar Vaga</a>
                         </li>
                     </ul>
                 </div>
@@ -25,9 +31,12 @@
 <script>
     export default {//Configura a instancia do component, data, watcher, computed, methods.
         name: 'TopoComponent', //Podemos determinar o nome do componente no proprio componente.
+        props: {
+            funcaoCallback: Function
+        },
         methods:{
             navegarPara(){
-                this.$emit('conteudo', (menu, texto) => { //Toda vez que o evento é lançado o filho recupera o evento com os dois parametros que o pai esta envianndo 
+                this.$emit('evento', (menu, texto) => { //Toda vez que o evento é lançado o filho recupera o evento com os dois parametros que o pai esta envianndo 
                     console.log(texto);
                     console.log(menu);
                     return menu;

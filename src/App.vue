@@ -5,7 +5,8 @@
     Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
   -->
   <!-- O pai escuta o evento e o filho logo executa -->
-  <Topo @conteudo="$event('1', '2')"/><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
+  <!-- <Topo @evento="$event('1', '2')"/> --><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
+  <Topo :funcaoCallback="acao"/>
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case
@@ -37,6 +38,9 @@ export default {
     },
     trocarConteudo(filhoParaPai){
       this.visibilidade = filhoParaPai;
+    },
+    acao(p1,p2){ //Recebendo parametros do filho
+      console.log('Eai, filho ', p1, p2);
     }
   }
 }
