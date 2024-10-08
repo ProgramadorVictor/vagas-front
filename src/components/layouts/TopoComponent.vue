@@ -10,18 +10,18 @@
                 </nav>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#" @click="navegarPara('HomeKey')">Home</a>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#" @click="navegarParaConteudo('HomeKey')">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#" @click="navegarPara('PublicarVaga')">Publicar Vaga</a>
-                        </li> -->
-                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" @click="navegarParaConteudo('PublicarVaga')">Publicar Vaga</a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="#" @click="funcaoCallback('HomeKey', 'Home')">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#" @click="funcaoCallback('PublicarVaga', 'Vaga')">Publicar Vaga</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -41,6 +41,9 @@
                     console.log(menu);
                     return menu;
                 });
+            },
+            navegarParaConteudo(aba){
+                this.$emit('trocarAba', aba); //Deve acessar o valor pelo $event se não associar o evento a uma função no pai
             }
         }
     }

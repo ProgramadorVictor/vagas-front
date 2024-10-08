@@ -5,14 +5,15 @@
     Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
   -->
   <!-- O pai escuta o evento e o filho logo executa -->
-  <!-- <Topo @evento="$event('1', '2')"/> --><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
-  <Topo :funcaoCallback="acao"/>
+  <!-- <Topo @evento="$event('1', '2')"/> --><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. Poderia passar uma callback () => {}  no lugar do event.-->
+  <!-- <Topo :funcaoCallback="acao"/> -->
+  <Topo @trocarAba="conteudo = $event"/><!-- $event, pode ser recuperado ele é associado a um evento disparado. Não associando a uma função recuperando diretamente. -->
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case
     <conteudo-kebab-case/>
   -->
-  <ConteudoComponent :conteudo="visibilidade"/>
+  <ConteudoComponent v-if="visibilidade" :conteudo="conteudo"/>
   <button @click="desmontarComponente" style="margin: 0 auto; display: block;">Desmontar o Componente Conteudo</button>
   <!-- <h1>Componente App</h1>
   <p>App: {{ $style }}</p> -->
@@ -30,7 +31,8 @@ export default {
     'conteudo-kebab-case': ConteudoComponent, //Abordagem pouco usada para nomeação de ccomponents.
   },
   data: () => ({
-    visibilidade: 'HomeKey'
+    visibilidade: true,
+    conteudo: 'HomeKey',
   }),
   methods:{
     desmontarComponente(){

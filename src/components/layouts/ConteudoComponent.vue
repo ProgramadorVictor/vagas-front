@@ -35,7 +35,11 @@
             HomeKey: HomeView, //Atribuindo HomeView a chave HomeKey 
             PublicarVaga
         },
-        props: ['conteudo'],
+        props: {
+            conteudo:{
+                required: true,
+            }
+        },
         data(){
             return{
                 show: false,
