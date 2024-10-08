@@ -14,6 +14,7 @@
 </template>
 <script>
     export default {
+        //As props são validatas antes da criação do componente.
         props: { //Fazendo a tipagem dos dados que vão ser recebidos pelo componente.
             vaga: {
                 type: Object,
@@ -33,16 +34,25 @@
                     //     typeof vaga.tipo === 'string' && typeof vaga.publicacao === 'string'
                 }
             },
-            kebabCase: {
+            kebabCase: { //As props são validatas antes da criação do componente.
                 type: String,
                 required: false,
+                default: 'A descrição da vaga não foi fornecida.',
                 validator(value){ //Validator recebe o proprio valor da props que foi passada. Retorna true/false, estamos recebendo uma variavel.
                     if(value.length >= 10) return true;
                     return false;
                 }
+            },
+            semValor:{
+                type: String,
+                required: false,
+                default(){
+                    return '#'.repeat(20);
+                }
             }
         },
         created(){
+            console.log(this.semValor);
             console.log(this.kebabCase);
         }
     }
