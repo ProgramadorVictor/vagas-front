@@ -4,7 +4,8 @@
     É a ideia de que podemos reutilizar código com vários componentes em arquivos unicos, cada componente...
     Tendo suas funções unicas. E sendo colocado em diversas partes da estrutura HTML. Desta forma podemos encapsular e reutilizar o código.
   -->
-  <Topo @conteudo="trocarConteudo"/><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
+  <!-- O pai escuta o evento e o filho logo executa -->
+  <Topo @conteudo="$event('1', '2')"/><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. -->
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case

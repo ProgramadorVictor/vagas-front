@@ -26,8 +26,12 @@
     export default {//Configura a instancia do component, data, watcher, computed, methods.
         name: 'TopoComponent', //Podemos determinar o nome do componente no proprio componente.
         methods:{
-            navegarPara(menu){
-                this.$emit('conteudo', menu);
+            navegarPara(){
+                this.$emit('conteudo', (menu, texto) => { //Toda vez que o evento é lançado o filho recupera o evento com os dois parametros que o pai esta envianndo 
+                    console.log(texto);
+                    console.log(menu);
+                    return menu;
+                });
             }
         }
     }
