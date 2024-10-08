@@ -1,5 +1,7 @@
 {
   "name": "vagas-front",
+  "displayName": "Vagas Front",
+  "description": "Front-end com Vue.js para o projeto Vagas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
