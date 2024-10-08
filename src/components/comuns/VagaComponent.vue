@@ -8,7 +8,7 @@
             </p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">Salário: R$ {{vaga.salario}} | Modalidade: {{ vaga.modalidade }} | Tipo: {{vaga.tipo}} | Publicação: {{vaga.publicacao}}</small>
+            <small class="text-muted">Salário: R$ {{vaga.salario}} | Modalidade: {{ getModalidade }} | Tipo: {{getTipo}} | Publicação: {{getPublicacao}}</small>
         </div>
     </div>
 </template>
@@ -51,7 +51,29 @@
                 }
             }
         },
+        computed: {
+            getModalidade(){ //Simulando um relacionamento de tipo de modalidade.
+                switch(this.vaga.modalidade){
+                    case '1': return 'Home Office';
+                    case '2': return 'Presencial';
+                }
+                return ''
+            },
+            getTipo(){
+                switch(this.vaga.tipo){
+                    case '1': return 'CLT';
+                    case '2': return 'PJ';
+                }
+                return ''
+            },
+            getPublicacao(){
+                console.log(this.vaga.publicacao);
+                let dataPublicacao = new Date(this.vaga.publicacao);
+                return dataPublicacao.toLocaleString('pt-BR');
+            }
+        },
         created(){
+            console.log(typeof this.vaga.publicacao);
             console.log(this.semValor);
             console.log(this.kebabCase);
         }
