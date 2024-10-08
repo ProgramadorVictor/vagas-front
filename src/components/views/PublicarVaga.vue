@@ -79,12 +79,29 @@
                     titulo: this.titulo,
                     descricao: this.descricao,
                     salario: this.salario,
-                    modalidade: this.tipo,
+                    modalidade: this.getModalidade,
+                    tipo: this.getTipo,
                 });
 
                 //LocalStorage é usado por aplicações front-end para armazenar informações.
                 localStorage.setItem('vagas', JSON.stringify(vagas)); //O primeiro valor é a chave que estamos armazenando, O segundo valor é uma string.
                 //Não podemos passar um objeto diretamente, utilizamos o JSON.stringify(); Para converter o objeto em uma string JSON.
+            }
+        },
+        computed: {
+            getModalidade(){ //Simulando um relacionamento de tipo de modalidade.
+                switch(this.modalidade){
+                    case '1': return 'Home Office';
+                    case '2': return 'Presencial';
+                }
+                return ''
+            },
+            getTipo(){
+                switch(this.tipo){
+                    case '1': return 'CLT';
+                    case '2': return 'PJ';
+                }
+                return ''
             }
         }
     }
