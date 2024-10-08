@@ -68,8 +68,8 @@
         }),
         methods: {
             salvarVaga(){
-                let vagas = JSON.parse(localStorage.getItem('vagas')); //Obtendo a string e convertendo em um objeto
-                
+                let vagas = JSON.parse(localStorage.getItem('vagas')) ?? []; //Obtendo a string e convertendo em um objeto
+
                 if (!this.titulo || !this.descricao || !this.salario || !this.tipo) {
                     console.error('Todos os campos devem ser preenchidos');
                     return;
