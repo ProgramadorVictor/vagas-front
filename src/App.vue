@@ -8,6 +8,7 @@
   <!-- <Topo @evento="$event('1', '2')"/> --><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. Poderia passar uma callback () => {}  no lugar do event.-->
   <!-- <Topo :funcaoCallback="acao"/> -->
   <Topo @trocarAba="conteudo = $event"/><!-- $event, pode ser recuperado ele é associado a um evento disparado. Não associando a uma função recuperando diretamente. -->
+  <Alert v-if="alert.exibir" :alert="alert"/>
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case
@@ -22,6 +23,7 @@
 <script>
 import ConteudoComponent from './components/layouts/ConteudoComponent.vue'
 import TopoComponent from './components/layouts/TopoComponent.vue' 
+import AlertComponent from './components/comuns/AlertComponent.vue';
 
 export default {
   name: 'App',
@@ -29,10 +31,29 @@ export default {
     ConteudoComponent, //Sintaxe enxuta.
     Topo: TopoComponent, //Topo é a chave e TopoComponent é o conteúdo que vai ser recebido pela chave Topo, Topo faz referencia a TopoComponent.
     'conteudo-kebab-case': ConteudoComponent, //Abordagem pouco usada para nomeação de ccomponents.
+    Alert: AlertComponent
+  },
+  mounted(){
+    this.emitter.on('alerta', (obj) => {
+      this.alert.exibir = true;
+      this.alert.msg = obj.msg;
+      this.alert.class = obj.class;
+      console.log(this.alert);
+      setTimeout(() => {
+        this.alert.exibir = false;
+        this.alert.msg = '';
+        this.alert.class = '';
+      }, 2500);
+    });
   },
   data: () => ({
     visibilidade: true,
     conteudo: 'HomeKey',
+    alert: {
+      exibir: false,
+      msg: '',
+      class: '',
+    },
   }),
   methods:{
     desmontarComponente(){

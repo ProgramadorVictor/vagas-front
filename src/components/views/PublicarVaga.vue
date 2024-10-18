@@ -73,7 +73,7 @@
                 this.salario    = '';
                 this.modalidade = '';
                 this.tipo       = '';
-                alert("Vaga cadastrada com sucesso!");
+                this.emitter.emit('alerta', {msg: 'A vaga foi cadastrada com sucesso', class: 'alert-success'});
             },
             salvarVaga(){
                 let vagas = JSON.parse(localStorage.getItem('vagas')) ?? []; //Obtendo a string e convertendo em um objeto
@@ -83,7 +83,7 @@
                 // data_atual.toLocaleString('pt-BR'); //Converte para o timezone pt-BR
 
                 if (!this.titulo || !this.descricao || !this.salario || !this.tipo) {
-                    console.error('Todos os campos devem ser preenchidos');
+                    this.emitter.emit('alerta', {msg: 'Todos os campos devem ser preenchidos', class: 'alert-danger'});
                     return;
                 }
 
