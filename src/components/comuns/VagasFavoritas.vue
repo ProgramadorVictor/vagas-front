@@ -13,7 +13,13 @@
 </template>
 <script>
     export default {
-        name: 'VagasFavoritas'
+        name: 'VagasFavoritas',
+        mounted(){
+            //Primeiro parametro é o evento que esta escutando e o segundo é a função de callback.
+            this.emitter.on('eventoGlobal', (msg) => {
+                console.log(msg)
+            }) //Aqui estamos escutando o evento.
+        }
     }
 </script>
 <style lang="css">
