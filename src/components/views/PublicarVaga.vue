@@ -67,6 +67,14 @@
             tipo: '',
         }),
         methods: {
+            limparCamposFormulario(){
+                this.titulo     = '';
+                this.descricao  = '';
+                this.salario    = '';
+                this.modalidade = '';
+                this.tipo       = '';
+                alert("Vaga cadastrada com sucesso!");
+            },
             salvarVaga(){
                 let vagas = JSON.parse(localStorage.getItem('vagas')) ?? []; //Obtendo a string e convertendo em um objeto
                 let data_atual = new Date(Date.now()); //Obtendo a quantidade de segundos atual com Date.now(), instanciando o objeto date que converterar para o dia atual com a quantidade de segundos.
@@ -91,6 +99,8 @@
                 //LocalStorage é usado por aplicações front-end para armazenar informações.
                 localStorage.setItem('vagas', JSON.stringify(vagas)); //O primeiro valor é a chave que estamos armazenando, O segundo valor é uma string.
                 //Não podemos passar um objeto diretamente, utilizamos o JSON.stringify(); Para converter o objeto em uma string JSON.
+
+                this.limparCamposFormulario();
             }
         }
     }
