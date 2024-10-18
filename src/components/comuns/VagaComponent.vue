@@ -8,9 +8,9 @@
                     </div>
                     <div>   
                         <div class="form-check form-switch">
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" v-model="favoritada">
                             <label class="form-check-label">Favoritar</label>
-                            <button class="btn btn-danger" @click="dispararEventoComMitt()">Disparar</button>
+                            <!-- <button class="btn btn-danger" @click="dispararEventoComMitt()">Disparar</button> -->
                         </div>
                     </div>
                 </div>
@@ -29,6 +29,18 @@
 </template>
 <script>
     export default {
+        data: () => ({
+            favoritada: false,
+        }),
+        watch:{
+            favoritada(novo){
+                if(novo){
+                    this.emitter.emit('favoritarVaga', this.vaga.titulo);
+                }else{
+                    this.emitter.emit('desfavoritarVaga', this.vaga.titulo);
+                }
+            }
+        },
         //As props são validatas antes da criação do componente.
         props: { //Fazendo a tipagem dos dados que vão ser recebidos pelo componente.
             vaga: {
@@ -88,11 +100,11 @@
             }
         },
         methods: {
-            dispararEventoComMitt(){
-                //O primeiro parametro é o nome do evento, o segundo parametro é opcional é onde podemos passar dados.
-                this.emitter.emit('eventoGlobal', 'Vagas favoritas esta recebendo um evento de outro componente.') //Acessando a propriedade global que foi definida/configurada em main.js
-                //Aqui estamos disparando o evento de forma global, ainda precisamos recuperar o evento no componente que esta escutando.
-            }
+            // dispararEventoComMitt(){
+            //     //O primeiro parametro é o nome do evento, o segundo parametro é opcional é onde podemos passar dados.
+            //     this.emitter.emit('eventoGlobal', 'Vagas favoritas esta recebendo um evento de outro componente.') //Acessando a propriedade global que foi definida/configurada em main.js
+            //     //Aqui estamos disparando o evento de forma global, ainda precisamos recuperar o evento no componente que esta escutando.
+            // }
         },
         created(){
             console.log(typeof this.vaga.publicacao);
