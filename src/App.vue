@@ -16,7 +16,9 @@
 
     <!-- Trabalhando com slots nomeados, podemos utilizar multiplos slots. -->
     <template #titulo></template><!-- #titulo ou v-slot:titulo -->
-    <template #descricao></template>
+    <template #descricao>
+      {{ alert.msg }}
+    </template>
 
     <!-- <h3>
       Este conteudo vai para o slot padrão
