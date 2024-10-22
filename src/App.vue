@@ -9,9 +9,9 @@
   <!-- <Topo :funcaoCallback="acao"/> -->
   <Topo @trocarAba="conteudo = $event"/><!-- $event, pode ser recuperado ele é associado a um evento disparado. Não associando a uma função recuperando diretamente. -->
   <Alert v-if="alert.exibir" :alert="alert">
-    <div :class="`alert ${alert.class}`" role="alert">
-      {{ alert.msg }}
-    </div>
+    <!-- Trabalhando com slots nomeados, podemos utilizar multiplos slots. -->
+    <template #titulo></template><!-- #titulo ou v-slot:titulo -->
+    <template #descricao></template>
   </Alert>
   <!--
     <ConteudoComponent/>
