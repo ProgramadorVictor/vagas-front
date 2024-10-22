@@ -82,7 +82,7 @@
                 // toLocaleDateString('pt-BR'); toLocaleTimeString('pt-BR'); //Respectivamente retorna a somente a data, retorna somente o horário.
                 // data_atual.toLocaleString('pt-BR'); //Converte para o timezone pt-BR
 
-                if (!this.titulo || !this.descricao || !this.salario || !this.tipo) {
+                if (!this.titulo || !this.descricao || !this.salario || !this.tipo || !this.modalidade) {
                     this.emitter.emit('alerta', {msg: 'Todos os campos devem ser preenchidos', class: 'alert-danger'});
                     return;
                 }

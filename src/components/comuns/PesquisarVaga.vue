@@ -5,21 +5,29 @@
             <div class="col">
                 <div class="form-group">
                     <label for="">Titulo da vaga</label>
-                    <input type="text" name="" id="" class="form-control" placeholder="Pesquise por palavras chaves por exemplo PHP, Pleno, Analista">
+                    <input type="text" name="" id="" class="form-control" placeholder="Pesquise por palavras chaves por exemplo PHP, Pleno, Analista" v-model="titulo">
                     <small class="form-text text-muted">Informe palavras que estejam relacionada ao titulo da vaga que você procura</small>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-outline-dark mt-2">Buscar</button>
+                <button class="btn btn-outline-dark mt-2" @click="pesquisarVaga()">Buscar</button>
             </div>
         </div>
     </div>
 </template>
 <script>
     export default {
-        name: 'PesquisarVaga'
+        name: 'PesquisarVaga',
+        data: () => ({
+            titulo: '',
+        }),
+        methods: {
+            pesquisarVaga(){
+                this.emitter.emit('pesquisarVaga', this.titulo);
+            }
+        }
     }
 </script>
 <style lang="css">
