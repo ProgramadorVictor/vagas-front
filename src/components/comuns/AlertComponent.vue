@@ -1,7 +1,5 @@
 <template>
-    <div :class="`alert ${alert.class}`" role="alert">
-        {{ alert.msg }}
-    </div>
+    <slot></slot>
 </template>
 <script>
     export default {

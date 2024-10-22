@@ -8,7 +8,11 @@
   <!-- <Topo @evento="$event('1', '2')"/> --><!-- Percebe-se que ao utilizar sintaxe mais clara o component é chamado pela sua chave, não por seu nome. Poderia passar uma callback () => {}  no lugar do event.-->
   <!-- <Topo :funcaoCallback="acao"/> -->
   <Topo @trocarAba="conteudo = $event"/><!-- $event, pode ser recuperado ele é associado a um evento disparado. Não associando a uma função recuperando diretamente. -->
-  <Alert v-if="alert.exibir" :alert="alert"/>
+  <Alert v-if="alert.exibir" :alert="alert">
+    <div :class="`alert ${alert.class}`" role="alert">
+      {{ alert.msg }}
+    </div>
+  </Alert>
   <!--
     <ConteudoComponent/>
     <conteudo-component/> Utilização da case, kebab-case
