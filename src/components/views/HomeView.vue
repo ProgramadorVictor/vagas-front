@@ -6,11 +6,7 @@
             </div>
         </div>
         
-        <div class="row mt-5" v-for="(vaga,id) in vagas" :key="id" :vaga="vaga">
-            <div class="col">
-                <VagaComponent :vaga="vaga" :kebab-case="vaga.descricao"/><!-- self-closing -->
-            </div>
-        </div>
+        <ListarVagas :vagas="vagas"/>
 
         <div class="row mt-5">
             <div class="col-4">
@@ -30,15 +26,15 @@
 </template>
 <script>
     import IndicadorComponent from '../comuns/IndicadorComponent.vue'
+    import ListarVagas from '../comuns/ListarVagas.vue';
     import PesquisarVaga from '../comuns/PesquisarVaga.vue'
-    import VagaComponent from '../comuns/VagaComponent.vue'
 
     export default {
         name: 'HomeView',
         components: {
             PesquisarVaga,
             IndicadorComponent,
-            VagaComponent
+            ListarVagas
         },
         data: () => ({
             usuarioOnline: 0,
