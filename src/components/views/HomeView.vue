@@ -6,7 +6,7 @@
             </div>
         </div>
         
-        <ListarVagas :vagas="vagas"/>
+        <ListarVagas/>
 
         <div class="row mt-5">
             <div class="col-4">
@@ -37,8 +37,7 @@
             ListarVagas
         },
         data: () => ({
-            usuarioOnline: 0,
-            vagas: []
+            usuarioOnline: 0
         }),
         methods: { 
             getUserOnline(){ //Simulando solicitações para o back-end para usuarios online
@@ -53,20 +52,6 @@
         },
         unmounted() { //Após a remoção do componente ser feita.
             console.log('Demonstado/destruído')
-        },
-        activated() { //Para melhora a performance, podemos usar activated ou deactivated. //Pois ao usar oomponent :is o componente é desmontado e renderizado.
-            //Ao usar esses dois o componente é guardado em cache. Para indica para o vue utiliza-se com <keep-alive></keep-alive>
-            console.log('Componente é ativado');
-            this.vagas = JSON.parse(localStorage.getItem('vagas')); //Convertendo a string que é retornada em localStorage e convertendo em um objeto JSON
-        },
-        mounted(){
-            this.emitter.on('pesquisarVaga', (titulo) => {
-                const vagas = JSON.parse(localStorage.getItem('vagas'));
-                if(titulo.trim().length != 0){
-                    return this.vagas = vagas.filter((vaga) => vaga.titulo.toLowerCase().includes(titulo.toLowerCase()));
-                }
-                return this.vagas = vagas;
-            });
         },
         deactivated() {
             console.log('Componente é desativado')
