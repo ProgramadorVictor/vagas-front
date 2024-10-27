@@ -1,9 +1,6 @@
 <template>
     <!-- Passando atributos para o slot, do componente pai -->
-    <slot 
-        atributo1="Esse é um atributo do slot filho, encaminhado para o template do componente pai"
-        atributo2="teste"
-        :array="[1,2,3,4,5]">
+    <slot :vagas="vagas">
     <!-- Conteúdo padrão, caso não passar o conteúdo HTML em HomeView -->
         <div class="row mt-5" v-for="(vaga,id) in vagas" :key="id" :vaga="vaga">
             <div class="col">

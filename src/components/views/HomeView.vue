@@ -9,8 +9,11 @@
         <!-- 'slotProps' é recomendado pela documentação do Vue. -->
         <ListarVagas v-slot:default="slotProps"><!-- Quando trabalhamos com slot padrão conseguimos colocar diretamente o v-slot na tag que faz a instancia do componente. Assim não tendo a necessidade do template -->
             <!-- Sobrepor o valor padrão. -->
-            {{ slotProps }}
-            <h1>Substituindo valores e recebendo atributos do slot dentro do componente ListarVagas.</h1>
+            <ul>
+                <!-- O 'slotProps' enviar um array com todos os atributos que são mandados pelo slot de ListarVagas -->
+                <li v-for="(slotProp, id) in slotProps.vagas" :key="id">{{ slotProp }}</li>
+            </ul>
+            <!-- Isso é otimo para ter diversas customizações em um componente. Tendo slots, padrão, como podemos mudar o tema do site. Natal, Halloween-->
         </ListarVagas>
 
         <div class="row mt-5">
