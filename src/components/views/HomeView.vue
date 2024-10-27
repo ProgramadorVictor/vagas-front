@@ -6,7 +6,12 @@
             </div>
         </div>
         
-        <ListarVagas/>
+        <!-- 'slotProps' é recomendado pela documentação do Vue. -->
+        <ListarVagas v-slot:default="slotProps"><!-- Quando trabalhamos com slot padrão conseguimos colocar diretamente o v-slot na tag que faz a instancia do componente. Assim não tendo a necessidade do template -->
+            <!-- Sobrepor o valor padrão. -->
+            {{ slotProps }}
+            <h1>Substituindo valores e recebendo atributos do slot dentro do componente ListarVagas.</h1>
+        </ListarVagas>
 
         <div class="row mt-5">
             <div class="col-4">
