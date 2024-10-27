@@ -1,13 +1,22 @@
 <template>
     <!-- Passando atributos para o slot, do componente pai -->
-    <slot :vagas="vagas">
-    <!-- Conteúdo padrão, caso não passar o conteúdo HTML em HomeView -->
+    <slot name="titulo" titulo="Titulo da listagem de vagas">
+        <h3 class="text-center">
+            Titulo da listagem de vaga padrão
+        </h3>
+    </slot>
+    <slot :vagas="vagas"> <!-- Conteúdo padrão, caso não passar o conteúdo HTML em HomeView -->
         <div class="row mt-5" v-for="(vaga,id) in vagas" :key="id" :vaga="vaga">
             <div class="col">
                 <VagaComponent :vaga="vaga" :kebab-case="vaga.descricao"/>
             </div>
         </div>
     </slot>
+    <slot name="rodape">
+        <h3 class="text-center">
+            Rodapé da listagem de vaga padrão
+        </h3>
+    </slot> 
 </template>
 <script>
     import VagaComponent from './VagaComponent.vue';

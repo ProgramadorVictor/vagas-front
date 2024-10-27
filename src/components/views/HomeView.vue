@@ -7,13 +7,36 @@
         </div>
         
         <!-- 'slotProps' é recomendado pela documentação do Vue. -->
-        <ListarVagas v-slot:default="slotProps"><!-- Quando trabalhamos com slot padrão conseguimos colocar diretamente o v-slot na tag que faz a instancia do componente. Assim não tendo a necessidade do template -->
+        <ListarVagas v-slot:default="slotProps" v-if="false"><!-- Quando trabalhamos com slot padrão conseguimos colocar diretamente o v-slot na tag que faz a instancia do componente. Assim não tendo a necessidade do template -->
             <!-- Sobrepor o valor padrão. -->
             <ul>
                 <!-- O 'slotProps' enviar um array com todos os atributos que são mandados pelo slot de ListarVagas -->
+                {{ slotProps }}
                 <li v-for="(slotProp, id) in slotProps.vagas" :key="id">{{ slotProp }}</li>
             </ul>
             <!-- Isso é otimo para ter diversas customizações em um componente. Tendo slots, padrão, como podemos mudar o tema do site. Natal, Halloween-->
+        </ListarVagas>
+
+        <ListarVagas>
+            <!-- 
+                Cada 'slotProps' definido é do escopo de cada slot ou seja titulo slotProps é um, diferente dos demais, tanto que os demais também são diferente do titulo.
+                Ou seja, eles não são a mesma váriavel/atributo do Vue onde o template vai substituir o valor padrão no template. 
+            -->
+
+            <template #titulo="slotProps">
+                <h3 class="text-center">
+                    {{slotProps.titulo}}
+                </h3>
+            </template>
+
+            <template #default="slotProps">
+                <div class="row mt-5" v-for="(vaga,id) in slotProps.vagas" :key="id">
+                    <div class="col">
+                        <VagaComponent :vaga="vaga"/>
+                    </div>
+                </div>
+            </template>
+
         </ListarVagas>
 
         <div class="row mt-5">
@@ -36,13 +59,15 @@
     import IndicadorComponent from '../comuns/IndicadorComponent.vue'
     import ListarVagas from '../comuns/ListarVagas.vue';
     import PesquisarVaga from '../comuns/PesquisarVaga.vue'
+    import VagaComponent from '../comuns/VagaComponent.vue';
 
     export default {
         name: 'HomeView',
         components: {
             PesquisarVaga,
             IndicadorComponent,
-            ListarVagas
+            ListarVagas,
+            VagaComponent
         },
         data: () => ({
             usuarioOnline: 0
